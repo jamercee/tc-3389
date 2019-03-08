@@ -45,11 +45,11 @@ main() {
     configure WEST 20mbit 5mbit
     configure EAST 20mbit 5mbit
 
-    # Classify iperf traffic
+    # Classify terminal server traffic
     tc filter add dev WEST protocol ip parent 1: prio 1 u32 \
         match ip dport 3389 0xffff flowid 1:20
 
-    # Classify iperf traffic
+    # Classify terminal server traffic
     tc filter add dev EAST protocol ip parent 1: prio 1 u32 \
         match ip sport 3389 0xffff flowid 1:20
 }
